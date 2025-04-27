@@ -63,7 +63,7 @@ fun LoginScreen(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
-                modifier = Modifier.align(Alignment.End),
+                modifier = Modifier.align(Alignment.End).height(40.dp),
                 painter = painterResource(id = R.drawable.cross),
                 contentDescription = "Cross"
             )
@@ -75,7 +75,7 @@ fun LoginScreen(navController: NavController) {
                 painter = painterResource(id = R.drawable.ic_yatts),
                 contentDescription = "Cross"
             )
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(30.dp))
             Text(
                 text = "Welcome Back",
                 style = TextStyle(
@@ -104,7 +104,7 @@ fun LoginScreen(navController: NavController) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .border(
-                        width = 0.5.dp,
+                        width = 0.2.dp,
                         color = colorResource(R.color.border_color),
                         shape = RoundedCornerShape(12.dp)
                     ),
@@ -187,7 +187,9 @@ fun LoginScreen(navController: NavController) {
             }
             Spacer(modifier = Modifier.height(20.dp))
             Button(
-                onClick = {},
+                onClick = {
+                    navController.navigate("profile_setup_screen")
+                },
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = colorResource(R.color.theme_color),
@@ -274,13 +276,44 @@ fun LoginScreen(navController: NavController) {
                     )
                 ) {
                     Image(
-                            modifier = Modifier
-                                .padding(20.dp)
-                                .size(40.dp),
+                        modifier = Modifier
+                            .padding(20.dp)
+                            .size(40.dp),
                         painter = painterResource(id = R.drawable.ic_facebook),
                         contentDescription = "Facebook Login"
                     )
                 }
+            }
+            Spacer(modifier = Modifier.weight(1f))
+            HorizontalDivider(
+                modifier = Modifier
+                    .fillMaxWidth(1f)
+                    .padding(horizontal = 30.dp),
+                thickness = 0.5.dp,
+                color = colorResource(R.color.dark_gray)
+            )
+            Spacer(modifier = Modifier.height(5.dp))
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    "Don't have an account ? ",
+                    color = colorResource(R.color.text_color),
+                    fontSize = 12.sp,
+                    fontFamily = poppinsFontFamily,
+                    fontWeight = FontWeight.Medium
+                )
+                Spacer(
+                    modifier = Modifier.width(5.dp)
+                )
+                Text(
+                    "Sign Up",
+                    color = colorResource(R.color.theme_color),
+                    fontSize = 12.sp,
+                    fontFamily = poppinsFontFamily,
+                    fontWeight = FontWeight.Medium
+                )
             }
         }
     }
