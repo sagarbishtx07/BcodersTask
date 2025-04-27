@@ -14,6 +14,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.task.screens.BookingScreen
+import com.example.task.screens.HomeMain
 import com.example.task.screens.HomeScreen
 import com.example.task.screens.LoginScreen
 import com.example.task.screens.ProfileSetupScreen
@@ -36,8 +38,14 @@ class MainActivity : ComponentActivity() {
                     composable("profile_setup_screen"){
                         ProfileSetupScreen(navController)
                     }
+                    composable("home_main"){
+                        HomeMain(navController)
+                    }
                     composable("home_screen"){
                         HomeScreen(navController)
+                    }
+                    composable("booking_screen"){
+                        BookingScreen(navController)
                     }
                 }
             }

@@ -18,4 +18,8 @@
     <color name="textColor2">#626262</color>
     <color name="textColor3">#454545</color>
     <color name="colorYellow">#0DFFC107</color>
+    <color name="textYellow">#FFC107</color>
+    <color name="colorGreen">#0D4CAF50</color>
+    <color name="textGreen">#4CAF50</color>
+    <color name="cardPurple">#A688FC</color>
 </resources>

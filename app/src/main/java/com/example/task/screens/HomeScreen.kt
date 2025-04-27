@@ -18,7 +18,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -26,7 +25,6 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -109,6 +107,7 @@ fun HomeScreen(
                         )
                     }
                     Image(
+                        modifier = Modifier.size(38.dp),
                         painter = painterResource(R.drawable.ic_notificationone),
                         contentDescription = "Icon Notification"
                     )
@@ -165,12 +164,69 @@ fun HomeScreen(
                     )
                 }
                 LazyRow(
-                    contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
-                    horizontalArrangement = Arrangement.spacedBy(16.dp)
+                    contentPadding = PaddingValues(horizontal = 1.dp, vertical = 8.dp),
+                    horizontalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
                     items(5) { index: Int ->
                         CardItem()
                     }
+                }
+                Spacer(modifier = Modifier.height(10.dp))
+                Text(
+                    text = "Top Talents",
+                    modifier = Modifier.fillMaxWidth(),
+                    textAlign = TextAlign.Start,
+                    fontFamily = poppinsFontFamily,
+                    fontSize = 14.sp,
+                    color = Color.Black,
+                    fontWeight = FontWeight.Medium
+                )
+                Spacer(modifier = Modifier.height(10.dp))
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(
+                            color = Color.White,
+                            shape = RoundedCornerShape(20.dp)
+                        )
+                ) {
+                    Row(modifier = Modifier.fillMaxWidth().padding(20.dp),
+                        horizontalArrangement = Arrangement.SpaceEvenly) {
+                        ImageCircle("John virk", R.drawable.ic_personfirst)
+                        Spacer(modifier = Modifier.width(5.dp))
+                        ImageCircle("Harry", R.drawable.ic_person2)
+                        Spacer(modifier = Modifier.width(5.dp))
+                        ImageCircle("Berry", R.drawable.ic_person3)
+                        Spacer(modifier = Modifier.width(5.dp))
+                        ImageCircle("Verry", R.drawable.ic_person4)
+                        Spacer(modifier = Modifier.width(5.dp))
+                        ImageCircle("Nopand", R.drawable.ic_person5)
+                    }
+                }
+                Spacer(modifier = Modifier.height(10.dp))
+
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(
+                        text = "Featured Artist",
+                        fontFamily = poppinsFontFamily,
+                        fontSize = 14.sp,
+                        color = Color.Black,
+                        fontWeight = FontWeight.Medium
+                    )
+                    Spacer(modifier = Modifier.weight(1f))
+                    Text(
+                        text = "See More",
+                        fontFamily = poppinsFontFamily,
+                        fontSize = 10.sp,
+                        color = colorResource(R.color.textColor3),
+                        fontWeight = FontWeight.Medium
+                    )
+                }
+                Spacer(modifier = Modifier.height(10.dp))
+                Row {
+                    FeaturedArtists(R.drawable.featuredartist1,Modifier.height(150.dp).fillMaxWidth().weight(1f))
+                    Spacer(modifier = Modifier.width(10.dp))
+                    FeaturedArtists(R.drawable.featuredartist2, Modifier.height(150.dp).fillMaxWidth().weight(1f))
                 }
             }
         }
@@ -204,17 +260,20 @@ fun CardItem() {
                         .clip(RoundedCornerShape(12.dp))
                 )
 
-                Card(
-                    shape = RoundedCornerShape(8.dp),
+                Box(
                     modifier = Modifier
-                        .background(color = colorResource(R.color.theme_color))
+                        .background(color = colorResource(R.color.cardPurple),
+                            shape = RoundedCornerShape(20.dp))
                         .align(Alignment.BottomEnd)
                         .padding(8.dp)
                 ) {
                     Text(
                         text = " \$ 80.0/hr",
-                        fontSize = 12.sp,
-                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                        fontSize = 11.sp,
+                        color = Color.White,
+                        fontFamily = poppinsFontFamily,
+                        fontWeight = FontWeight.Medium,
+                        modifier = Modifier.background(color = colorResource(R.color.cardPurple))
                     )
                 }
             }
@@ -264,24 +323,129 @@ fun CardItem() {
                     color = Color.Black
                 )
             }
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(color = colorResource(R.color.colorYellow))
-            ) {
-                Row {
-                    Image(
-                        painter = painterResource(id = R.drawable.ic_time), // Another image
-                        contentDescription = "Extra Image",
-                        modifier = Modifier.size(24.dp)
-                    )
-                    Text(
-                        text = "09:00 AM - 10:00 PM",
-                        fontSize = 12.sp,
-                        color = Color.Black
-                    )
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(
+                            color = colorResource(R.color.colorYellow),
+                            shape = RoundedCornerShape(20.dp)
+                        )
+                ) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.padding(2.dp)
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.ic_time), // Another image
+                            contentDescription = "Extra Image",
+                            modifier = Modifier.size(24.dp)
+                        )
+                        Spacer(modifier = Modifier.width(5.dp))
+                        Text(
+                            text = "09:00 AM - 10:00 PM",
+                            fontSize = 12.sp,
+                            color = colorResource(R.color.textYellow)
+                        )
+                    }
+                }
+                Spacer(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f)
+                )
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(
+                            color = colorResource(R.color.colorGreen),
+                            shape = RoundedCornerShape(20.dp)
+                        ),
+
+                    ) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.padding(2.dp)
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.ic_review), // Another image
+                            contentDescription = "Extra Image",
+                            modifier = Modifier.size(24.dp)
+                        )
+                        Spacer(modifier = Modifier.width(5.dp))
+                        Text(
+                            text = "457 reviews",
+                            fontSize = 12.sp,
+                            color = colorResource(R.color.textGreen)
+                        )
+                    }
                 }
             }
+        }
+    }
+}
+
+@Composable
+fun ImageCircle(
+    name: String,
+    image: Int
+) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Image(
+            painter = painterResource(id = image),
+            contentDescription = name,
+            modifier = Modifier
+                .size(45.dp) // You can adjust the size
+                .clip(CircleShape)
+                .background(Color.Gray), // optional background
+            contentScale = ContentScale.Crop
+        )
+        Spacer(modifier = Modifier.height(8.dp)) // Small space between image and text
+        Text(
+            text = name,
+            fontFamily = poppinsFontFamily,
+            fontWeight = FontWeight.Medium,
+            color = Color.Black,
+            fontSize = 10.sp
+        )
+    }
+}
+
+@Composable
+fun FeaturedArtists(image: Int, modifier: Modifier) {
+    Box(
+        modifier = modifier
+    ) {
+        Image(
+            painter = painterResource(id = image), // Replace with your actual image
+            contentDescription = "Main Image",
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(10.dp)
+                .height(127.dp)
+                .clip(RoundedCornerShape(12.dp))
+
+        )
+
+        Box(
+            modifier = Modifier
+                .background(color = colorResource(R.color.cardPurple),
+                    shape = RoundedCornerShape(20.dp))
+                .align(Alignment.BottomCenter)
+                .padding(5.dp)
+        ) {
+            Text(
+                text = "\$ 77.00 - \$ 80.00",
+                fontSize = 11.sp,
+                color = Color.White,
+                fontFamily = poppinsFontFamily,
+                fontWeight = FontWeight.Medium,
+                modifier = Modifier.background(color = colorResource(R.color.cardPurple))
+            )
         }
     }
 }

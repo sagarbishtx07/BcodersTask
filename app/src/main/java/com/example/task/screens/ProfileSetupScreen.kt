@@ -248,7 +248,7 @@ fun ProfileSetupScreen(
             Spacer(modifier = Modifier.height(20.dp))
             Button(
                 onClick = {
-                    navController.navigate("home_screen")
+                    navController.navigate("home_main")
                 },
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(
