@@ -17,7 +17,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -52,6 +54,9 @@ fun ProfileSetupScreen(
     navController: NavController
 ) {
     var selectedBox by remember { mutableStateOf<String?>("Man") }
+    var name by remember { mutableStateOf<String>("John Smith") }
+    var location by remember { mutableStateOf<String>("Choose Location") }
+    var dob by remember { mutableStateOf<String>("MM/DD/YYYY") }
 
     Surface(
         color = colorResource(R.color.whiteBg),
@@ -60,7 +65,8 @@ fun ProfileSetupScreen(
             .padding(WindowInsets.systemBars.asPaddingValues())
     ) {
         Column(
-            modifier = Modifier.padding(20.dp),
+            modifier = Modifier.padding(20.dp)
+                .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Row(
@@ -119,14 +125,15 @@ fun ProfileSetupScreen(
             )
             Spacer(modifier = Modifier.height(20.dp))
             OutlinedTextField(
-                value = "John Smith",
-                onValueChange = { },
+                value = name,
+                onValueChange = {name = it },
                 label = { Text("Full Name") },
                 modifier = Modifier
                     .fillMaxWidth()
                     .border(
                         width = 0.5.dp,
-                        color = colorResource(R.color.border_color2),
+//                        color = colorResource(R.color.border_color2),
+                        color = Color.Transparent,
                         shape = RoundedCornerShape(12.dp)
                     ),
                 colors = TextFieldDefaults.outlinedTextFieldColors(
@@ -180,14 +187,14 @@ fun ProfileSetupScreen(
                 modifier = Modifier.height(20.dp)
             )
             OutlinedTextField(
-                value = "Choose Location",
-                onValueChange = { },
+                value = location,
+                onValueChange = { location = it},
                 label = { Text("Location") },
                 modifier = Modifier
                     .fillMaxWidth()
                     .border(
                         width = 0.5.dp,
-                        color = colorResource(R.color.border_color2),
+                          color = Color.Transparent,
                         shape = RoundedCornerShape(12.dp)
                     ),
                 colors = TextFieldDefaults.outlinedTextFieldColors(
@@ -214,14 +221,14 @@ fun ProfileSetupScreen(
                 modifier = Modifier.height(20.dp)
             )
             OutlinedTextField(
-                value = "MM/DD/YYYY",
-                onValueChange = { },
+                value = dob,
+                onValueChange = { dob =it},
                 label = { Text("DOB") },
                 modifier = Modifier
                     .fillMaxWidth()
                     .border(
                         width = 0.5.dp,
-                        color = colorResource(R.color.border_color2),
+                          color = Color.Transparent,
                         shape = RoundedCornerShape(12.dp)
                     ),
                 colors = TextFieldDefaults.outlinedTextFieldColors(

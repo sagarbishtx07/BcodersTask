@@ -19,8 +19,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -30,6 +32,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -52,6 +58,7 @@ import com.example.task.ui.theme.poppinsFontFamily
 fun HomeScreen(
     navController: NavController
 ) {
+    var search by remember { mutableStateOf("") }
     Surface(
         color = Color.Transparent,
         modifier = Modifier
@@ -71,7 +78,8 @@ fun HomeScreen(
                 )
         ) {
             Column(
-                modifier = Modifier.padding(20.dp),
+                modifier = Modifier.padding(20.dp)
+                    .verticalScroll(rememberScrollState()),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Row(
@@ -119,8 +127,8 @@ fun HomeScreen(
                         .background(color = Color.White)
                 ) {
                     TextField(
-                        value = "",
-                        onValueChange = { },
+                        value = search,
+                        onValueChange = {search = it },
                         label = { Text("Search") },
                         modifier = Modifier
                             .fillMaxWidth()

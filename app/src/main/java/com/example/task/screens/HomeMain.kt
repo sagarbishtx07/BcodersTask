@@ -46,7 +46,7 @@ import com.example.task.ui.theme.poppinsFontFamily
 fun HomeMain(
     navController: NavController
 ) {
-    val selectedIndex = remember { mutableStateOf(0) }
+    val selectedIndex = remember { mutableStateOf(2) }
 
     Scaffold(
         floatingActionButton = {
@@ -71,7 +71,7 @@ fun HomeMain(
                     Spacer(Modifier.width(10.dp))
                     BottomNavigationItem(
                         icon = Icons.Default.DateRange,
-                        label = "Home",
+                        label = "Booking",
                         selected = selectedIndex.value == 0
                     ) {
                         selectedIndex.value = 0

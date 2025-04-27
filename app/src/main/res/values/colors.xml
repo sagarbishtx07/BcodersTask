@@ -17,9 +17,12 @@
     <color name="gradientColor2">#E1DAF8</color>
     <color name="textColor2">#626262</color>
     <color name="textColor3">#454545</color>
+    <color name="textColor4">#A1A1A1</color>
     <color name="colorYellow">#0DFFC107</color>
     <color name="textYellow">#FFC107</color>
     <color name="colorGreen">#0D4CAF50</color>
     <color name="textGreen">#4CAF50</color>
+    <color name="textBlue">#2246FC</color>
+    <color name="colorBlue">#0D2246FC</color>
     <color name="cardPurple">#A688FC</color>
 </resources>
