@@ -63,7 +63,6 @@ fun HomeScreen(
         color = Color.Transparent,
         modifier = Modifier
             .fillMaxSize()
-            .padding(WindowInsets.systemBars.asPaddingValues())
     ) {
         Box(
             modifier = Modifier
@@ -78,7 +77,8 @@ fun HomeScreen(
                 )
         ) {
             Column(
-                modifier = Modifier.padding(20.dp)
+                modifier = Modifier
+                    .padding(20.dp)
                     .verticalScroll(rememberScrollState()),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -128,7 +128,7 @@ fun HomeScreen(
                 ) {
                     TextField(
                         value = search,
-                        onValueChange = {search = it },
+                        onValueChange = { search = it },
                         label = { Text("Search") },
                         modifier = Modifier
                             .fillMaxWidth()
@@ -176,7 +176,15 @@ fun HomeScreen(
                     horizontalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
                     items(5) { index: Int ->
-                        CardItem()
+                        CardItem(
+                            modifier = Modifier
+                                .fillParentMaxWidth()
+                                .padding(horizontal = 5.dp)
+                                .background(
+                                    color = Color.White,
+                                    shape = RoundedCornerShape(16.dp)
+                                )
+                        )
                     }
                 }
                 Spacer(modifier = Modifier.height(10.dp))
@@ -198,8 +206,12 @@ fun HomeScreen(
                             shape = RoundedCornerShape(20.dp)
                         )
                 ) {
-                    Row(modifier = Modifier.fillMaxWidth().padding(20.dp),
-                        horizontalArrangement = Arrangement.SpaceEvenly) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(20.dp),
+                        horizontalArrangement = Arrangement.SpaceEvenly
+                    ) {
                         ImageCircle("John virk", R.drawable.ic_personfirst)
                         Spacer(modifier = Modifier.width(5.dp))
                         ImageCircle("Harry", R.drawable.ic_person2)
@@ -232,9 +244,21 @@ fun HomeScreen(
                 }
                 Spacer(modifier = Modifier.height(10.dp))
                 Row {
-                    FeaturedArtists(R.drawable.featuredartist1,Modifier.height(150.dp).fillMaxWidth().weight(1f))
+                    FeaturedArtists(
+                        R.drawable.featuredartist1,
+                        Modifier
+                            .height(150.dp)
+                            .fillMaxWidth()
+                            .weight(1f)
+                    )
                     Spacer(modifier = Modifier.width(10.dp))
-                    FeaturedArtists(R.drawable.featuredartist2, Modifier.height(150.dp).fillMaxWidth().weight(1f))
+                    FeaturedArtists(
+                        R.drawable.featuredartist2,
+                        Modifier
+                            .height(150.dp)
+                            .fillMaxWidth()
+                            .weight(1f)
+                    )
                 }
             }
         }
@@ -242,16 +266,16 @@ fun HomeScreen(
 }
 
 @Composable
-fun CardItem() {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 5.dp),
-        shape = RoundedCornerShape(16.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
+fun CardItem(modifier: Modifier) {
+    Box(
+        modifier = modifier
     ) {
         Column(
-            modifier = Modifier.padding(8.dp)
+            modifier = Modifier
+                .padding(8.dp)
+                .fillMaxWidth(),
+            horizontalAlignment = Alignment.Start,
+            verticalArrangement = Arrangement.SpaceBetween
         ) {
             Box(
                 modifier = Modifier
@@ -259,7 +283,7 @@ fun CardItem() {
                     .fillMaxWidth()
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.sample_image1), // Replace with your actual image
+                    painter = painterResource(id = R.drawable.sample_image1),
                     contentDescription = "Main Image",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -270,8 +294,10 @@ fun CardItem() {
 
                 Box(
                     modifier = Modifier
-                        .background(color = colorResource(R.color.cardPurple),
-                            shape = RoundedCornerShape(20.dp))
+                        .background(
+                            color = colorResource(R.color.cardPurple),
+                            shape = RoundedCornerShape(20.dp)
+                        )
                         .align(Alignment.BottomEnd)
                         .padding(8.dp)
                 ) {
@@ -293,7 +319,7 @@ fun CardItem() {
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.sample_image2), // Replace with your icon
+                    painter = painterResource(id = R.drawable.sample_image2),
                     contentDescription = "Icon",
                     modifier = Modifier
                         .size(32.dp)
@@ -316,9 +342,11 @@ fun CardItem() {
                         color = Color.Gray
                     )
                 }
-
+                Spacer(modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f))
                 Image(
-                    painter = painterResource(id = R.drawable.star4), // Another image
+                    painter = painterResource(id = R.drawable.star4),
                     contentDescription = "Extra Image",
                     modifier = Modifier.size(24.dp)
                 )
@@ -331,10 +359,14 @@ fun CardItem() {
                     color = Color.Black
                 )
             }
-            Row(verticalAlignment = Alignment.CenterVertically) {
+            Spacer(modifier = Modifier.height(4.dp))
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxWidth()
+            ) {
                 Box(
                     modifier = Modifier
-                        .fillMaxWidth()
                         .background(
                             color = colorResource(R.color.colorYellow),
                             shape = RoundedCornerShape(20.dp)
@@ -345,9 +377,9 @@ fun CardItem() {
                         modifier = Modifier.padding(2.dp)
                     ) {
                         Image(
-                            painter = painterResource(id = R.drawable.ic_time), // Another image
+                            painter = painterResource(id = R.drawable.ic_time),
                             contentDescription = "Extra Image",
-                            modifier = Modifier.size(24.dp)
+                            modifier = Modifier.size(20.dp)
                         )
                         Spacer(modifier = Modifier.width(5.dp))
                         Text(
@@ -364,21 +396,19 @@ fun CardItem() {
                 )
                 Box(
                     modifier = Modifier
-                        .fillMaxWidth()
                         .background(
                             color = colorResource(R.color.colorGreen),
                             shape = RoundedCornerShape(20.dp)
                         ),
-
-                    ) {
+                ) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier.padding(2.dp)
                     ) {
                         Image(
-                            painter = painterResource(id = R.drawable.ic_review), // Another image
+                            painter = painterResource(id = R.drawable.ic_review),
                             contentDescription = "Extra Image",
-                            modifier = Modifier.size(24.dp)
+                            modifier = Modifier.size(20.dp)
                         )
                         Spacer(modifier = Modifier.width(5.dp))
                         Text(
@@ -406,12 +436,11 @@ fun ImageCircle(
             painter = painterResource(id = image),
             contentDescription = name,
             modifier = Modifier
-                .size(45.dp) // You can adjust the size
                 .clip(CircleShape)
-                .background(Color.Gray), // optional background
+                .background(Color.Gray),
             contentScale = ContentScale.Crop
         )
-        Spacer(modifier = Modifier.height(8.dp)) // Small space between image and text
+        Spacer(modifier = Modifier.height(8.dp))
         Text(
             text = name,
             fontFamily = poppinsFontFamily,
@@ -428,7 +457,7 @@ fun FeaturedArtists(image: Int, modifier: Modifier) {
         modifier = modifier
     ) {
         Image(
-            painter = painterResource(id = image), // Replace with your actual image
+            painter = painterResource(id = image),
             contentDescription = "Main Image",
             contentScale = ContentScale.Crop,
             modifier = Modifier
@@ -441,8 +470,10 @@ fun FeaturedArtists(image: Int, modifier: Modifier) {
 
         Box(
             modifier = Modifier
-                .background(color = colorResource(R.color.cardPurple),
-                    shape = RoundedCornerShape(20.dp))
+                .background(
+                    color = colorResource(R.color.cardPurple),
+                    shape = RoundedCornerShape(20.dp)
+                )
                 .align(Alignment.BottomCenter)
                 .padding(5.dp)
         ) {

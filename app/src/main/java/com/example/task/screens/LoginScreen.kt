@@ -227,7 +227,7 @@ fun LoginScreen(navController: NavController) {
                 horizontalArrangement = Arrangement.Center,
             ) {
                 HorizontalDivider(
-                    modifier = Modifier.weight(1f), // Occupy available space on the left
+                    modifier = Modifier.weight(1f),
                     thickness = 0.5.dp,
                     color = colorResource(R.color.dark_gray)
                 )
@@ -242,7 +242,7 @@ fun LoginScreen(navController: NavController) {
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 HorizontalDivider(
-                    modifier = Modifier.weight(1f), // Occupy available space on the left
+                    modifier = Modifier.weight(1f),
                     thickness = 0.5.dp,
                     color = colorResource(R.color.dark_gray)
                 )

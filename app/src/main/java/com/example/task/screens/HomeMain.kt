@@ -5,9 +5,11 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.DateRange
@@ -21,6 +23,7 @@ import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -51,9 +54,14 @@ fun HomeMain(
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
+                modifier = Modifier
+                    .size(55.dp)
+                    .offset(y = 50.dp),
+                shape = CircleShape,
                 onClick = { selectedIndex.value = 2 },
                 containerColor = MaterialTheme.colorScheme.primary,
-                contentColor = Color.Unspecified
+                contentColor = Color.Unspecified,
+                elevation = FloatingActionButtonDefaults.elevation(),
             ) {
                 Icon(
                     painter = painterResource(id = R.drawable.bottomnavcenter),
@@ -67,6 +75,7 @@ fun HomeMain(
         bottomBar = {
             BottomAppBar(
                 tonalElevation = 8.dp,
+                containerColor = Color.White,
                 actions = {
                     Spacer(Modifier.width(10.dp))
                     BottomNavigationItem(
@@ -84,7 +93,7 @@ fun HomeMain(
                     ) {
                         selectedIndex.value = 1
                     }
-                    Spacer(Modifier.weight(1f)) // Space for center FAB
+                    Spacer(Modifier.weight(1f))
                     BottomNavigationItem(
                         icon = Icons.Outlined.MailOutline,
                         label = "Profile",

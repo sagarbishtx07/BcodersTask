@@ -13,8 +13,8 @@
     <color name="theme_color">#933EFD</color>
     <color name="text_color">#323232</color>
     <color name="border_color2">#D4AFFF</color>
-    <color name="gradientColor1">#C3B6F2</color>
-    <color name="gradientColor2">#E1DAF8</color>
+    <color name="gradientColor1">#CEC3F8</color>
+    <color name="gradientColor2">#F7F6FB</color>
     <color name="textColor2">#626262</color>
     <color name="textColor3">#454545</color>
     <color name="textColor4">#A1A1A1</color>
@@ -22,6 +22,7 @@
     <color name="textYellow">#FFC107</color>
     <color name="colorGreen">#0D4CAF50</color>
     <color name="textGreen">#4CAF50</color>
+    <color name="textCancel">#FF3D00</color>
     <color name="textBlue">#2246FC</color>
     <color name="colorBlue">#0D2246FC</color>
     <color name="cardPurple">#A688FC</color>

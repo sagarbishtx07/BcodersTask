@@ -73,7 +73,9 @@ fun ProfileSetupScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Image(
-                    modifier = Modifier.height(24.dp),
+                    modifier = Modifier.height(24.dp).clickable {
+                        navController.popBackStack()
+                    },
                     painter = painterResource(R.drawable.ic_back),
                     contentDescription = "Back Arrow"
                 )
